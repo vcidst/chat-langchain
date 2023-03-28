@@ -9,7 +9,7 @@ from langchain.vectorstores.faiss import FAISS
 
 def ingest_docs():
     """Get documents from web pages."""
-    loader = ReadTheDocsLoader("langchain.readthedocs.io/en/latest/")
+    loader = ReadTheDocsLoader("rasa.com/docs/")
     raw_documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
