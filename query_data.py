@@ -7,8 +7,21 @@ from langchain.chains.chat_vector_db.prompts import (CONDENSE_QUESTION_PROMPT,
 from langchain.chains.llm import LLMChain
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.vectorstores.base import VectorStore
+from langchain.prompts.prompt import PromptTemplate
 
+prompt_template = """Your name is RUFF (Rasa's user-friendly friend!), a chatbot trained on Rasa.com Documentation for its users. Given the following extracted parts of a long document and a question, create a final answer with references ("SOURCES").
+Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. Ask users to only ask you question related to Rasa or Chatbot if they ask you anything else.
+Return a "SOURCES" part in your answer whenever you're referring to a specific page or section.
+
+{context}
+
+Question: {question}
+Helpful Answer:"""
+QA_PROMPT = PromptTemplate(
+    template=prompt_template, input_variables=["context", "question"]
+)
 
 def get_chain(
     vectorstore: VectorStore, question_handler, stream_handler, tracing: bool = False
@@ -30,12 +43,14 @@ def get_chain(
         temperature=0,
         verbose=True,
         callback_manager=question_manager,
+        max_tokens=1024,
     )
     streaming_llm = OpenAI(
         streaming=True,
         callback_manager=stream_manager,
         verbose=True,
         temperature=0,
+        max_tokens=1024,
     )
 
     question_generator = LLMChain(
