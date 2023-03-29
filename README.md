@@ -1,27 +1,17 @@
+# 👨‍🎤 RUFF (Rasa's User Friendly Friend)
+
+Ruff is currently deployed on my laptop can be accessed via the ngrok link. To run it locally, 
+- install the dependencies, 
+- change the documentation directory path in `ingest.py`, 
+- run `python ingest.py`, 
+- `make start` and 
+- open `localhost:9000`
 # 🦜️🔗 ChatLangChain
 
 This repo is an implementation of a locally hosted chatbot specifically focused on question answering over the [LangChain documentation](https://langchain.readthedocs.io/en/latest/).
 Built with [LangChain](https://github.com/hwchase17/langchain/) and [FastAPI](https://fastapi.tiangolo.com/).
 
 The app leverages LangChain's streaming support and async API to update the page in real time for multiple users.
-
-## ✅ Running locally
-1. Install dependencies: `pip install -r requirements.txt`
-1. Run `ingest.sh` to ingest LangChain docs data into the vectorstore (only needs to be done once).
-   1. You can use other [Document Loaders](https://langchain.readthedocs.io/en/latest/modules/document_loaders.html) to load your own data into the vectorstore.
-1. Run the app: `make start`
-   1. To enable tracing, make sure `langchain-server` is running locally and pass `tracing=True` to `get_chain` in `main.py`. You can find more documentation [here](https://langchain.readthedocs.io/en/latest/tracing.html).
-1. Open [localhost:9000](http://localhost:9000) in your browser.
-
-## 🚀 Important Links
-
-Deployed version (to be updated soon): [chat.langchain.dev](https://chat.langchain.dev)
-
-Hugging Face Space (to be updated soon): [huggingface.co/spaces/hwchase17/chat-langchain](https://huggingface.co/spaces/hwchase17/chat-langchain)
-
-Blog Posts: 
-* [Initial Launch](https://blog.langchain.dev/langchain-chat/)
-* [Streaming Support](https://blog.langchain.dev/streaming-support-in-langchain/)
 
 ## 📚 Technical description
 
