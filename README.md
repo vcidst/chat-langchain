@@ -3,6 +3,7 @@
 Ruff is currently deployed on my laptop can be accessed via the ngrok link. To run it locally, 
 - install the dependencies, 
 - change the documentation directory path in `ingest.py`, 
+- run `export OPENAI_API_KEY=<openai_api_key>`
 - run `python ingest.py`, 
 - `make start` and 
 - open `localhost:9000`
